@@ -26,8 +26,8 @@ export default class MessageArea extends Component {
                                     <div class="time">
                                         {
                                             currentTime - new Date(time) < dayInMillis ?
-                                               'Đã gửi lúc' + dateFormat(time, "HH:MM") :
-                                               'Đã gửi lúc' + dateFormat(time, "m/d/yy HH:MM")
+                                               'Đã gửi lúc ' + dateFormat(time, "HH:MM") :
+                                               'Đã gửi lúc ' + dateFormat(time, "m/d/yy HH:MM")
                                         }
                                     </div> 
                                     :

@@ -40,10 +40,14 @@ export default class Chat extends Component {
                 <input id="chat_phone" class="textarea" type="text" placeholder="Số điện thoại"
                        style="bottom:47px"
                        />
-                <input style="width:80%" class="textarea" type="text" placeholder={this.props.conf.placeholderText}
+                <input id="chat_mess" style="width:80%" class="textarea" type="text" placeholder={this.props.conf.placeholderText}
                        ref={(input) => { this.input = input }}
                        onKeyPress={this.handleKeyPress}/>
-                <button style="width:20%" onclick="submitSend()">Gửi</button>
+                <button style="width: 40px;
+position: fixed;
+bottom: 14px;
+right: 0;
+height: 32px;" onclick="submitSend()">Gửi</button>
 
                 <a class="banner" href="https://github.com/idoco/intergram" target="_blank">
                     Phát triển bởi <b>Babygroup</b>&nbsp;
@@ -51,7 +55,12 @@ export default class Chat extends Component {
             </div>
         );
     }
+    submitSend = () => {
 
+            let text = document.getElementById('chat_mess').value;
+            this.socket.send({text, from: 'visitor', visitorName: this.props.conf.visitorName});
+            document.getElementById('chat_mess').value = '';
+    };
     handleKeyPress = (e) => {
         if (e.keyCode == 13 && this.input.value) {
             let text = this.input.value;
