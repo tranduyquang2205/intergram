@@ -53,7 +53,7 @@ export default class Chat extends Component {
 
     handleKeyPress = (e) => {
         if (e.keyCode == 13 && this.input.value) {
-            if(document.getElementById("chat_phone").value){
+            if(document.getElementById("chat_phone").value && document.getElementById("chat_phone").value !== 'Vui lòng điền SĐT!'){
             let text = this.input.value;
             this.socket.send({text, from: 'visitor', visitorName: this.props.conf.visitorName});
             this.input.value = '';
@@ -75,7 +75,7 @@ export default class Chat extends Component {
                 this.autoResponseState = 'set';
             }
         }else{
-            toastr.error('Vui lòng điền SĐT!');
+            document.getElementById("chat_phone").value = 'Vui lòng điền SĐT!';
         }
         }
     };
