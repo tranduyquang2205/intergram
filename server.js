@@ -61,7 +61,7 @@ io.on('connection', function(socket){
 
         socket.on('disconnect', function(){
             if (messageReceived) {
-                sendTelegramMessage(chatId, userId + " đã thoát");
+                sendTelegramMessage(chatId,'Người dùng' + userId + " đã thoát");
             }
         });
     });
