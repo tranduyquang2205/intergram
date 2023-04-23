@@ -38,11 +38,12 @@ export default class Chat extends Component {
                 <MessageArea messages={state.messages} conf={this.props.conf}/>
 
                 <input id="chat_phone" class="textarea" type="text" placeholder="Số điện thoại"
-                       style="bottom:50px"
+                       style="bottom:47px"
                        />
-                <input class="textarea" type="text" placeholder={this.props.conf.placeholderText}
+                <input style="width:80%" class="textarea" type="text" placeholder={this.props.conf.placeholderText}
                        ref={(input) => { this.input = input }}
                        onKeyPress={this.handleKeyPress}/>
+                <button style="width:20%" onclick="submitSend()">Gửi</button>
 
                 <a class="banner" href="https://github.com/idoco/intergram" target="_blank">
                     Phát triển bởi <b>Babygroup</b>&nbsp;

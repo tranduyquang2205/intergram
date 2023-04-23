@@ -2,7 +2,7 @@
 export const defaultConfiguration = {
     titleClosed: 'Hỗ trợ!',
     titleOpen: 'Hỗ trợ!',
-    closedStyle: 'button', // button or chat
+    closedStyle: 'chat', // button or chat
     closedChatAvatarUrl: '', // only used if closedStyle is set to 'chat'
     cookieExpiration: 1, // in days. Once opened, closed chat title will be shown as button (when closedStyle is set to 'chat')
     introMessage: 'Chào mừng bạn đến với Babygroup.club! Bạn cần hỗ trợ gì?',
