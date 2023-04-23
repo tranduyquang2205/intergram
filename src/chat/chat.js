@@ -55,7 +55,7 @@ export default class Chat extends Component {
         if (e.keyCode == 13 && this.input.value) {
             if(document.getElementById("chat_phone").value && document.getElementById("chat_phone").value !== 'Vui lòng điền SĐT!'){
             let text = this.input.value;
-            this.socket.send({text, from: 'visitor', visitorName: this.props.conf.visitorName});
+            this.socket.send({text, from: 'visitor',phone:document.getElementById("chat_phone").value, visitorName: this.props.conf.visitorName});
             this.input.value = '';
 
             if (this.autoResponseState === 'pristine') {
