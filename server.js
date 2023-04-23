@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 // handle admin Telegram messages
 app.post('/hook', function(req, res){
     try {
-        
+        console.log('kkkk',req.body.message)
         const message = req.body.message || req.body.channel_post;
         const chatId = message.chat.id;
         const name = message.chat.first_name || message.chat.title || "admin";
