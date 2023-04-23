@@ -56,12 +56,12 @@ io.on('connection', function(socket){
             messageReceived = true;
             io.to(userId).emit(chatId + "-" + userId, msg);
             let visitorName = msg.visitorName ? "[" + msg.visitorName + "]: " : "";
-            sendTelegramMessage(chatId, "*" + msg.phone + "*:\n" + visitorName + " `" + msg.text+"`");
+            sendTelegramMessage(chatId, "*ID: " + userId + "*\n" + "*SĐT" + msg.phone + "*:\n" + visitorName + " `" + msg.text+"`");
         });
 
         socket.on('disconnect', function(){
             if (messageReceived) {
-                sendTelegramMessage(chatId,'Người dùng' + userId + " đã thoát");
+                sendTelegramMessage(chatId,'Người dùng ' + userId + " đã thoát");
             }
         });
     });
