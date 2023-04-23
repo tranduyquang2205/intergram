@@ -1,4 +1,4 @@
-# Intergram - [Demo](https://www.intergram.xyz/)
+# Intergram - [Demo](https://www.babygroup-support.onrender.com/)
 
 A **Free** live chat widget that you can easily add to your website. It will let you chat with your website visitors using your Telegram messenger. 
 
@@ -24,7 +24,7 @@ By using a Telegram bot, I delegate all the message routing work and chat state 
 
 ```html
 <script> window.intergramId = "Your unique chat id" </script>
-<script id="intergram" type="text/javascript" src="https://www.intergram.xyz/js/widget.js"></script>
+<script id="intergram" type="text/javascript" src="https://www.babygroup-support.onrender.com/js/widget.js"></script>
 ```
 
 *Note: replying to a specific message should be used to respond to that specific visitor. Sending a standard message will broadcast to all connected chat clients (You might find it easier to use if you have only one active conversation)*
@@ -47,7 +47,7 @@ Currently you can customize all visible texts and the main widget color by setti
         alwaysUseFloatingButton: false // Use the mobile floating button also on large screens
     };
 </script>
-<script id="intergram" type="text/javascript" src="https://www.intergram.xyz/js/widget.js"></script>
+<script id="intergram" type="text/javascript" src="https://www.babygroup-support.onrender.com/js/widget.js"></script>
 ```
 
 <p align="center"> <img src="docs/hello.jpg"/> </p>
