@@ -56,7 +56,7 @@ io.on('connection', function(socket){
             messageReceived = true;
             io.to(userId).emit(chatId + "-" + userId, msg);
             let visitorName = msg.visitorName ? "[" + msg.visitorName + "]: " : "";
-            sendTelegramMessage(chatId, "**"+msg.phone + "**:" + visitorName + " " + msg.text);
+            sendTelegramMessage(chatId, "*" + msg.phone + "*:\n" + visitorName + " `" + msg.text+"`");
         });
 
         socket.on('disconnect', function(){
