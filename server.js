@@ -29,7 +29,7 @@ app.post('/hook', function(req, res){
                 "Markdown");
         } else if (reply) {
             let replyText = reply.text || "";
-            let userId = replyText.split('SĐT:')[0].replace('ID: ','');
+            let userId = replyText.split('\nSĐT:')[0].replace('ID: ','');
             io.to(userId).emit(chatId + "-" + userId, {name, text, from: 'admin'});
         } else if (text){
             io.emit(chatId, {name, text, from: 'admin'});
