@@ -16,14 +16,14 @@ app.post('/hook', function(req, res){
         console.log('kkkk',req.body.message)
         const message = req.body.message || req.body.channel_post;
         const chatId = message.chat.id;
-        const name = message.chat.first_name || message.chat.title || "admin";
+        const name = message.from.first_name || message.from.last_name || message.chat.title || "admin";
         const text = message.text || "";
         const reply = message.reply_to_message;
 
         if (text.startsWith("/start")) {
             console.log("/start chatId " + chatId);
             sendTelegramMessage(chatId,
-                "*Welcome to Intergram* \n" +
+                "*Welcome to Babygroup* \n" +
                 "Your unique chat id is `" + chatId + "`\n" +
                 "Use it to link between the embedded chat and this telegram chat",
                 "Markdown");
@@ -31,8 +31,6 @@ app.post('/hook', function(req, res){
             let replyText = reply.text || "";
             let userId = replyText.split('\nSĐT:')[0].replace('ID: ','');
             io.to(userId).emit(chatId + "-" + userId, {name, text, from: 'admin'});
-        } else if (text){
-            io.emit(chatId, {name, text, from: 'admin'});
         }
 
     } catch (e) {
@@ -61,7 +59,7 @@ io.on('connection', function(socket){
 
         socket.on('disconnect', function(){
             if (messageReceived) {
-                sendTelegramMessage(chatId,'Người dùng ' + userId + " đã thoát");
+                sendTelegramMessage(chatId,"Người dùng *" + userId + "* đã thoát","Markdown");
             }
         });
     });
