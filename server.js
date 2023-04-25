@@ -41,6 +41,7 @@ app.post('/hook', function(req, res){
                     "Bạn đã tiếp nhận khách "+ userId,
                     "Markdown");
                 sendTelegramMessage(staff_id, replyText ,"Markdown");
+                io.to(userId).emit(chatId + "-" + userId, {name, text:name+' đang hỗ trợ bạn...', from: 'admin'});
             } 
         }
         else if (reply) {
