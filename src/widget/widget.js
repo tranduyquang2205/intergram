@@ -43,7 +43,15 @@ export default class Widget extends Component {
                 {/* Open/close button */}
                 { (isMobile || conf.alwaysUseFloatingButton) && !isChatOpen ?
 
-                    <ChatFloatingButton color={conf.mainColor} onClick={this.onClick}/>
+                    (conf.closedStyle === 'chat' || isChatOpen || this.wasChatOpened()) ?
+                    <div style={{background: conf.mainColor, ...desktopTitleStyle}} onClick={this.onClick}>
+                        <div style={{display: 'flex', alignItems: 'center', padding: '0px 30px 0px 0px'}}>
+                            {isChatOpen ? conf.titleOpen : conf.titleClosed}
+                        </div>
+                        <ArrowIcon isOpened={isChatOpen}/>
+                    </div>
+                    :
+                    <ChatTitleMsg onClick={this.onClick} conf={conf}/>
 
                     :
 
