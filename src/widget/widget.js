@@ -27,19 +27,15 @@ export default class Widget extends Component {
         const wrapperHeight = {height: desktopHeight};
 
         let wrapperStyle;
-        if (!isChatOpen && (isMobile || conf.alwaysUseFloatingButton)) {
-            wrapperStyle = { ...desktopWrapperStyle}; // closed mobile floating button
-        } else if (!isMobile){
-            wrapperStyle = (conf.closedStyle === 'chat' || isChatOpen || this.wasChatOpened()) ?
-                (isChatOpen) ? 
-                    { ...desktopWrapperStyle, ...wrapperWidth} // desktop mode, button style
-                    :
-                    { ...desktopWrapperStyle}
+
+        wrapperStyle = (conf.closedStyle === 'chat' || isChatOpen || this.wasChatOpened()) ?
+            (isChatOpen) ? 
+                { ...desktopWrapperStyle, ...wrapperWidth} // desktop mode, button style
                 :
-                { ...desktopClosedWrapperStyleChat}; // desktop mode, chat style
-        } else {
-            wrapperStyle = mobileOpenWrapperStyle; // open mobile wrapper should have no border
-        }
+                { ...desktopWrapperStyle}
+            :
+            { ...desktopClosedWrapperStyleChat}; // desktop mode, chat style
+
 
         return (
             <div style={wrapperStyle}>
