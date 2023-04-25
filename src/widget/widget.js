@@ -69,7 +69,7 @@ export default class Widget extends Component {
                 {/*Chat IFrame*/}
                 <div style={{
                     display: isChatOpen ? 'block' : 'none',
-                    height: isMobile ? '80vh' : desktopHeight
+                    height: isMobile ? '60vh' : desktopHeight
                 }}>
                     {pristine ? null : <ChatFrame {...this.props} /> }
                 </div>
