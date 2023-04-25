@@ -37,9 +37,11 @@ app.post('/hook', function(req, res){
                 sendTelegramMessage(chatId,
                     name+" đã tiếp nhận khách "+ userId,
                     "Markdown");
+                sendTelegramMessage(staff_id,
+                    "Bạn đã tiếp nhận khách "+ userId,
+                    "Markdown");
+                sendTelegramMessage(staff_id, replyText ,"Markdown");
             } 
-
-            io.to(userId).emit(chatId + "-" + userId, {name, text, from: 'admin'});
         }
         else if (reply) {
             let replyText = reply.text || "";
