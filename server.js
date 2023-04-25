@@ -82,6 +82,9 @@ io.on('connection', function(socket){
         socket.on('disconnect', function(){
             if (messageReceived) {
                 sendTelegramMessage(chatId,"Người dùng *" + userId + "* đã thoát","Markdown");
+                if(online_users[userId]!==""){
+                sendTelegramMessage(online_users[userId],"Người dùng *" + userId + "* đã thoát","Markdown");
+                }
                 delete online_users[userId]; 
                 console.log('online_users',online_users)
             }
