@@ -41,7 +41,7 @@ app.post('/hook', function(req, res){
                     "Bạn đã tiếp nhận khách *"+ userId+"*",
                     "Markdown");
                 sendTelegramMessage(staff_id, replyText ,"Markdown");
-                io.to(userId).emit("-922150959" + "-" + userId, {name, text:name+' đang hỗ trợ bạn...', from: 'admin'});
+                io.to(userId).emit("-922150959" + "-" + userId, {name:null, text:name+' đang hỗ trợ bạn...', from: 'admin'});
             } 
         }
         else if (reply) {
