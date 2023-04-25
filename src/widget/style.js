@@ -2,7 +2,7 @@
 export const desktopWrapperStyle = {
     position: 'fixed',
     bottom: '20px',
-    right: '20px',
+    left: '20px',
     zIndex: 2147483647,
     borderRadius: '10px',
     background: 'rgb(229, 229, 229)',
