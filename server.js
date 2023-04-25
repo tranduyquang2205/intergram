@@ -40,7 +40,7 @@ app.post('/hook', function(req, res){
                 sendTelegramMessage(staff_id,
                     "Bạn đã tiếp nhận khách *"+ userId+"*",
                     "Markdown");
-                sendTelegramMessage(staff_id, replyText ,"Markdown");
+                sendTelegramMessage(staff_id, replyText,"Markdown");
                 io.to(userId).emit("-922150959" + "-" + userId, {name:null, text:name+' đang hỗ trợ bạn...', from: 'admin'});
             } 
         }
@@ -49,7 +49,7 @@ app.post('/hook', function(req, res){
             let userId = replyText.split(':\n')[0].replace('ID: ','');
             if(online_users[userId]!==staff_id){
                 if(chatId == "-922150959"){
-                    sendTelegramMessage(staff_id, "Khách "+ userId +" chưa được tiếp nhận" ,"Markdown"); 
+                    sendTelegramMessage(chatId, "Khách "+ userId +" chưa được tiếp nhận" ,"Markdown"); 
                 }
                 if(chatId == staff_id){
                     sendTelegramMessage(staff_id, "Khách này đã được NV khác tiếp nhận" ,"Markdown"); 
