@@ -41,13 +41,13 @@ app.post('/hook', function(req, res){
                     "Bạn đã tiếp nhận khách "+ userId,
                     "Markdown");
                 sendTelegramMessage(staff_id, replyText ,"Markdown");
-                io.to(userId).emit(chatId + "-" + userId, {name, text:name+' đang hỗ trợ bạn...', from: 'admin'});
+                io.to(userId).emit("-922150959" + "-" + userId, {name, text:name+' đang hỗ trợ bạn...', from: 'admin'});
             } 
         }
         else if (reply) {
             let replyText = reply.text || "";
             let userId = replyText.split(':\n')[0].replace('ID: ','');
-            io.to(userId).emit(chatId + "-" + userId, {name, text, from: 'admin'});
+            io.to(userId).emit("-922150959" + "-" + userId, {name, text, from: 'admin'});
         }
 
     } catch (e) {
@@ -70,7 +70,7 @@ io.on('connection', function(socket){
         console.log('online_users',online_users)
         socket.on('message', function(msg) {
             messageReceived = true;
-            io.to(userId).emit(chatId + "-" + userId, msg);
+            io.to(userId).emit("-922150959" + "-" + userId, msg);
             let visitorName = msg.visitorName ? "[" + msg.visitorName + "]: " : "";
             if(online_users[userId]==""){
                 sendTelegramMessage(chatId, "*ID: " + userId + "*:\n"  + visitorName + " `" + msg.text+"`","Markdown");
