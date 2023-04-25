@@ -34,11 +34,11 @@ app.post('/hook', function(req, res){
             let userId = replyText.split(':\n')[0].replace('ID: ','');
             if(online_users[userId]==""){
                 online_users[userId] = staff_id
-                sendTelegramMessage(chatId,
-                    name+" đã tiếp nhận khách "+ userId,
+                sendTelegramMessage(chatId,"*"+
+                    name+"* đã tiếp nhận khách *"+ userId+"*",
                     "Markdown");
                 sendTelegramMessage(staff_id,
-                    "Bạn đã tiếp nhận khách "+ userId,
+                    "Bạn đã tiếp nhận khách *"+ userId+"*",
                     "Markdown");
                 sendTelegramMessage(staff_id, replyText ,"Markdown");
                 io.to(userId).emit("-922150959" + "-" + userId, {name, text:name+' đang hỗ trợ bạn...', from: 'admin'});
@@ -47,6 +47,9 @@ app.post('/hook', function(req, res){
         else if (reply) {
             let replyText = reply.text || "";
             let userId = replyText.split(':\n')[0].replace('ID: ','');
+            if(online_users[userId]!==staff_id){
+                sendTelegramMessage(staff_id, "Khách này đã được người khác tiếp nhận" ,"Markdown"); 
+            }
             io.to(userId).emit("-922150959" + "-" + userId, {name, text, from: 'admin'});
         }
 
