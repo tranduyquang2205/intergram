@@ -37,9 +37,6 @@ export default class Chat extends Component {
             <div>
                 <MessageArea messages={state.messages} conf={this.props.conf}/>
 
-                <input id="chat_phone" class="textarea" type="text" placeholder="Số điện thoại"
-                       style="bottom:47px"
-                       />
                 <input id="chat_mess" class="textarea" type="text" placeholder={this.props.conf.placeholderText}
                        ref={(input) => { this.input = input }}
                        onKeyPress={this.handleKeyPress}/>
@@ -53,9 +50,8 @@ export default class Chat extends Component {
 
     handleKeyPress = (e) => {
         if (e.keyCode == 13 && this.input.value) {
-            if(document.getElementById("chat_phone").value && document.getElementById("chat_phone").value !== 'Vui lòng điền SĐT!'){
             let text = this.input.value;
-            this.socket.send({text, from: 'visitor',phone:document.getElementById("chat_phone").value, visitorName: this.props.conf.visitorName});
+            this.socket.send({text, from: 'visitor', visitorName: this.props.conf.visitorName});
             this.input.value = '';
 
             if (this.autoResponseState === 'pristine') {
@@ -74,9 +70,6 @@ export default class Chat extends Component {
                 }, 60 * 1000);
                 this.autoResponseState = 'set';
             }
-        }else{
-            document.getElementById("chat_phone").value = 'Vui lòng điền SĐT!';
-        }
         }
     };
 
