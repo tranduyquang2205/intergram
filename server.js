@@ -48,7 +48,13 @@ app.post('/hook', function(req, res){
             let replyText = reply.text || "";
             let userId = replyText.split(':\n')[0].replace('ID: ','');
             if(online_users[userId]!==staff_id){
-                sendTelegramMessage(staff_id, "Khách này đã được người khác tiếp nhận" ,"Markdown"); 
+                if(chatId == "-922150959"){
+                    sendTelegramMessage(staff_id, "Khách "+ userId +" chưa được tiếp nhận" ,"Markdown"); 
+                }
+                if(chatId == staff_id){
+                    sendTelegramMessage(staff_id, "Khách này đã được NV khác tiếp nhận" ,"Markdown"); 
+                }
+                
             }
             io.to(userId).emit("-922150959" + "-" + userId, {name, text, from: 'admin'});
         }
