@@ -41,14 +41,14 @@ app.post('/hook', function(req, res){
                     "Bạn đã tiếp nhận khách *"+ userId+"*",
                     "Markdown");
                 sendTelegramMessage(staff_id, replyText,"Markdown");
-                io.to(userId).emit("-922150959" + "-" + userId, {name:null, text:name+' đang hỗ trợ bạn...', from: 'admin'});
+                io.to(userId).emit("-1001657159316" + "-" + userId, {name:null, text:name+' đang hỗ trợ bạn...', from: 'admin'});
             } 
         }
         else if (reply) {
             let replyText = reply.text || "";
             let userId = replyText.split(':\n')[0].replace('ID: ','');
             if(online_users[userId]!==staff_id){
-                if(chatId == "-922150959"){
+                if(chatId == "-1001657159316"){
                     sendTelegramMessage(chatId, "Khách "+ userId +" chưa được tiếp nhận" ,"Markdown"); 
                 }
                 if(chatId == staff_id){
@@ -56,7 +56,7 @@ app.post('/hook', function(req, res){
                 }
                 
             }
-            io.to(userId).emit("-922150959" + "-" + userId, {name, text, from: 'admin'});
+            io.to(userId).emit("-1001657159316" + "-" + userId, {name, text, from: 'admin'});
         }
 
     } catch (e) {
@@ -79,7 +79,7 @@ io.on('connection', function(socket){
         console.log('online_users',online_users)
         socket.on('message', function(msg) {
             messageReceived = true;
-            io.to(userId).emit("-922150959" + "-" + userId, msg);
+            io.to(userId).emit("-1001657159316" + "-" + userId, msg);
             let visitorName = msg.visitorName ? "[" + msg.visitorName + "]: " : "";
             if(online_users[userId]==""){
                 sendTelegramMessage(chatId, "*ID: " + userId + "*:\n"  + visitorName + " `" + msg.text+"`","Markdown");
