@@ -1,6 +1,6 @@
 
 export const defaultConfiguration = {
-    titleClosed: 'Bấm để kết nối nhanh!',
+    titleClosed: 'Chat ẩn danh với tư vấn viên!',
     titleOpen: 'Kết nối nhanh!',
     closedStyle: 'chat', // button or chat
     closedChatAvatarUrl: '', // only used if closedStyle is set to 'chat'
